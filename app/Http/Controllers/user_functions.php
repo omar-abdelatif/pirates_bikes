@@ -37,9 +37,8 @@ class user_functions extends Controller
         DB::table('super_admin')->where("id", $request->id)->update($request->except(["_token", "id"]));
         return redirect("dashboard");
     }
-    public function done($id)
+    public function login()
     {
-        $row = DB::table("super_admin")->find($id);
-
+        echo "welcome to login function";
     }
 }

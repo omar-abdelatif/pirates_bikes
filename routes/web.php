@@ -19,7 +19,9 @@ Route::get('/', function () {
 });
 Route::get('dashboard', [user_functions::class, "dashboard"]);
 Route::view('signup', "create");
+Route::view('signin', "login");
 Route::post('store', [user_functions::class, "store"]);
 Route::get('edit/{id}', [user_functions::class, "edit"]);
 Route::post('update', [user_functions::class, "update"]);
 Route::get('delete/{id}', [user_functions::class, "delete"]);
+Route::post('login', [user_functions::class, "login"]);
