@@ -14,7 +14,6 @@
         <input type="text" name="name" placeholder="Name Plz">
         <input type="email" name="email" placeholder="Email Plz">
         <input type="password" name="password" placeholder="Password Plz">
-        <!-- <input type="file" name="admin"> -->
         <input type="submit" value="Submit">
     </form>
 </body>

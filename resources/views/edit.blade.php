@@ -11,9 +11,9 @@
 <body>
     <form action="{{ url('update') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <input type="text" name="name" placeholder="Name Here">
-        <input type="email" name="email" placeholder="Email Here">
-        <input type="password" name="password" placeholder="Password Here">
+        <input type="text" name="name" value="{{$admin->name}}" placeholder="Name Here">
+        <input type="email" name="email" value="{{$admin->email}}" placeholder="Email Here">
+        <input type="password" name="password" value="{{$admin->password}}" placeholder="Password Here">
         <input type="submit" value="Submit">
     </form>
 </body>

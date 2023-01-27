@@ -18,8 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('dashboard', [user_functions::class, "dashboard"]);
-Route::view('edit/{id}', [user_functions::class, "edit"]);
-Route::view('signin', "create");
+Route::view('signup', "create");
 Route::post('store', [user_functions::class, "store"]);
+Route::get('edit/{id}', [user_functions::class, "edit"]);
+Route::post('update', [user_functions::class, "update"]);
 Route::get('delete/{id}', [user_functions::class, "delete"]);
-Route::get('select', [user_functions::class, "select"]);

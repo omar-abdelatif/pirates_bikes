@@ -9,8 +9,9 @@
 </head>
 
 <body>
-    <h1 style="text-align: center; margin-top: 30px;">Super Admin Dashboard Table</h1>
-    <table border="1" style="margin: 0 auto; width: 100%" ;>
+    <h1 style="text-align: center;">Super Admin Dashboard Table</h1>
+    <a href='{{url("signup")}}'>create user</a>
+    <table border="1" style="margin: 30px auto 0; width: 100%" ;>
         <thead>
             <th>#</th>
             <th>Name</th>

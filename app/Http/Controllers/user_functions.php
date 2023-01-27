@@ -14,11 +14,7 @@ class user_functions extends Controller
     }
     public function store(Request $request)
     {
-        DB::table("super_admin")->insert([
-            "name" => $request->name,
-            "email" => $request->email,
-            "password" => $request->password,
-        ]);
+        DB::table("super_admin")->insert($request->except("_token"));
         return redirect("dashboard");
     }
     public function delete($id)
@@ -26,13 +22,14 @@ class user_functions extends Controller
         DB::table("super_admin")->delete($id);
         return redirect("dashboard");
     }
+    public function edit($id)
+    {
+        $admin = DB::table("super_admin")->find($id);
+        return view("edit", compact("admin"));
+    }
     public function update(Request $request)
     {
-        DB::table("super_admin")->update([
-            "name" => $request->name,
-            "email" => $request->email,
-            "password" => $request->password,
-        ]);
+        DB::table('super_admin')->where("id", $request->id)->update($request->except(["_token", "id"]));
         return redirect("dashboard");
     }
     public function select()
