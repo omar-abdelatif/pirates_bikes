@@ -14,6 +14,11 @@ class user_functions extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            "name" => "min:3|required|unique:super_admin,name",
+            "password" => "min:3|required",
+            "email" => "required|email"
+        ]);
         DB::table("super_admin")->insert($request->except("_token"));
         return redirect("dashboard");
     }
@@ -32,8 +37,9 @@ class user_functions extends Controller
         DB::table('super_admin')->where("id", $request->id)->update($request->except(["_token", "id"]));
         return redirect("dashboard");
     }
-    public function select()
+    public function done($id)
     {
-        echo "select function";
+        $row = DB::table("super_admin")->find($id);
+
     }
 }
