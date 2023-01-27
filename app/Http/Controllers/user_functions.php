@@ -9,7 +9,8 @@ class user_functions extends Controller
 {
     public function dashboard()
     {
-        return view("dashboard");
+        $superAdmin = DB::table("super_admin")->get();
+        return view("dashboard", compact("superAdmin"));
     }
     public function create()
     {
