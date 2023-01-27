@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('create', [user_functions::class, "create"]);
-Route::post('store', [user_functions::class, "store"]);
 Route::get('dashboard', [user_functions::class, "dashboard"]);
+Route::view('edit/{id}', [user_functions::class, "edit"]);
+Route::view('signin', "create");
+Route::post('store', [user_functions::class, "store"]);
+Route::get('delete/{id}', [user_functions::class, "delete"]);
+Route::get('select', [user_functions::class, "select"]);

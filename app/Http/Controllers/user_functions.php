@@ -12,15 +12,31 @@ class user_functions extends Controller
         $superAdmin = DB::table("super_admin")->get();
         return view("dashboard", compact("superAdmin"));
     }
-    public function create()
-    {
-        return view("create");
-    }
     public function store(Request $request)
     {
-        DB::table("super_admin")->insert(["name" => $request->name,
+        DB::table("super_admin")->insert([
+            "name" => $request->name,
             "email" => $request->email,
             "password" => $request->password,
         ]);
+        return redirect("dashboard");
+    }
+    public function delete($id)
+    {
+        DB::table("super_admin")->delete($id);
+        return redirect("dashboard");
+    }
+    public function update(Request $request)
+    {
+        DB::table("super_admin")->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => $request->password,
+        ]);
+        return redirect("dashboard");
+    }
+    public function select()
+    {
+        echo "select function";
     }
 }

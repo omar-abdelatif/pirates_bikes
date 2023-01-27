@@ -26,7 +26,7 @@
                 <td>{{$admin->email}}</td>
                 <td>{{$admin->password}}</td>
                 <td>
-                    <a href="">Edit</a>
+                    <a href='{{url("edit/$admin->id")}}'>Edit</a>
                     <a href='{{url("delete/$admin->id")}}'>Delete</a>
                 </td>
             </tr>
