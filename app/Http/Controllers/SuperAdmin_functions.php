@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class user_functions extends Controller
+class SuperAdmin_functions extends Controller
 {
     public function dashboard()
     {
