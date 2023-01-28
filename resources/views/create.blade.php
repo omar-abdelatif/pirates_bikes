@@ -11,7 +11,7 @@
 <body>
     <p>
         have an account
-        <a href="{{url('login')}}">Login</a>
+        <a href="{{url('signin')}}">Login</a>
     </p>
     @if ($errors->any())
         @foreach ($errors->all() as $error)

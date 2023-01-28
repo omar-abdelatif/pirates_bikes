@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SuperAdmin_functions extends Controller
@@ -18,14 +17,14 @@ class SuperAdmin_functions extends Controller
         $request->validate([
             "name" => "min:3|required|unique:super_admin,name",
             "password" => "min:3|required",
-            "email" => "required|email|unique:super_admin"
+            "email" => "required|email|unique:super_admin,email"
         ]);
         DB::table("super_admin")->insert([
             "name" => $request->name,
             "email" => $request->email,
             "password" => bcrypt($request->password)
         ]);
-        return redirect("dashboard");
+        return redirect("login");
     }
     public function delete($id)
     {
@@ -50,32 +49,8 @@ class SuperAdmin_functions extends Controller
     {
         return view("login");
     }
-    public function signinrequest(Request $request)
+    public function loginrequest(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard');
-        }
-        return redirect('login')->with('danger', 'login failed plz try again');
-    }
-    public function authCheck()
-    {
-        if (Auth::check()) {
-            return view('dashbaord');
-        }
-        return redirect('login')->with(
-            'success',
-            'you are not allowed to access'
-        );
-    }
-    public function logout(Request $request)
-    {
-        $request->session()->flush();
-        Auth::login();
-        return redirect("login");
+        dd("hello from the other side");
     }
 }
