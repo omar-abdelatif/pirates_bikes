@@ -24,7 +24,7 @@ class SuperAdmin_functions extends Controller
             "email" => $request->email,
             "password" => bcrypt($request->password)
         ]);
-        return redirect("login");
+        return redirect("signin");
     }
     public function delete($id)
     {
@@ -45,12 +45,8 @@ class SuperAdmin_functions extends Controller
         ]);
         return redirect("dashboard");
     }
-    public function login()
-    {
-        return view("login");
-    }
     public function loginrequest(Request $request)
     {
-        dd("hello from the other side");
+        dd($request);
     }
 }
