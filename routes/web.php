@@ -13,5 +13,9 @@ Route::post('logout', [SuperAdmin_functions::class, "logout"]);
 Route::view('/', 'welcome');
 Route::post('store', [SuperAdmin_functions::class, "store"]);
 Route::view('signup', "create")->name("register");
-Route::view("signin", "login")->name("login");
+Route::get('signin', [SuperAdmin_functions::class], 'login');
 Route::post("loginrequest", [SuperAdmin_functions::class], "loginrequest");
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

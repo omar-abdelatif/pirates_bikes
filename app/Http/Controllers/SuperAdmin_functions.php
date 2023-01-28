@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class SuperAdmin_functions extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function dashboard()
     {
         $superAdmin = DB::table("super_admin")->get();
