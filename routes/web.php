@@ -14,12 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('dashboard', [user_functions::class, "dashboard"]);
+Route::view('/', 'welcome');
 Route::view('signup', "create");
 Route::view('signin', "login");
+Route::get('dashboard', [user_functions::class, "dashboard"]);
 Route::post('store', [user_functions::class, "store"]);
 Route::get('edit/{id}', [user_functions::class, "edit"]);
 Route::post('update', [user_functions::class, "update"]);
