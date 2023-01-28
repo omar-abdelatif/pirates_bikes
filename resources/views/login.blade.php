@@ -9,10 +9,10 @@
 </head>
 
 <body>
-    <form action="{{ url('login') }}" method="post">
+    <form action="{{ url('login ') }}" method="get">
         @csrf
-        <input type="email" name="email" placeholder="Email Plz">
-        <input type="password" name="password" placeholder="Password Plz">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
         <input type="submit" value="Submit">
     </form>
 </body>

@@ -1,25 +1,19 @@
 <?php
 
-use App\Http\Controllers\user_functions;
+use App\Http\Controllers\SuperAdmin_functions;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::group(["middleware" => "auth"], function () {
+});
+Route::post('store', [SuperAdmin_functions::class, "store"]);
+Route::get('edit/{id}', [SuperAdmin_functions::class, "edit"]);
+Route::post('update', [SuperAdmin_functions::class, "update"]);
+Route::get('delete/{id}', [SuperAdmin_functions::class, "delete"]);
+Route::get('signin', [SuperAdmin_functions::class, "signin"]);
+
+Route::get('dashboard', [SuperAdmin_functions::class, "dashboard"]);
+
 
 Route::view('/', 'welcome');
+Route::view('login', "login")->name("login");
 Route::view('signup', "create");
-Route::view('signin', "login");
-Route::get('dashboard', [user_functions::class, "dashboard"]);
-Route::post('store', [user_functions::class, "store"]);
-Route::get('edit/{id}', [user_functions::class, "edit"]);
-Route::post('update', [user_functions::class, "update"]);
-Route::get('delete/{id}', [user_functions::class, "delete"]);
-Route::post('login', [user_functions::class, "login"]);

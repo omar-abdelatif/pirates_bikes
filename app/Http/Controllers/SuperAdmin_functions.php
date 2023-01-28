@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class user_functions extends Controller
@@ -19,7 +20,11 @@ class user_functions extends Controller
             "password" => "min:3|required",
             "email" => "required|email"
         ]);
-        DB::table("super_admin")->insert($request->except("_token"));
+        DB::table("super_admin")->insert([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => bcrypt($request->password)
+        ]);
         return redirect("dashboard");
     }
     public function delete($id)
@@ -34,11 +39,18 @@ class user_functions extends Controller
     }
     public function update(Request $request)
     {
-        DB::table('super_admin')->where("id", $request->id)->update($request->except(["_token", "id"]));
+        DB::table('super_admin')->where("id", $request->id)->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => bcrypt($request->password),
+        ]);
         return redirect("dashboard");
     }
-    public function login(Request $request)
+    public function signin(Request $request)
     {
-        echo "welcome to login function";
+        if (Auth::attempt($request->only(['email', "password"]))) {
+            return redirect("dashboard");
+        }
+        return redirect("login");
     }
 }
