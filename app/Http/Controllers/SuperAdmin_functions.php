@@ -46,7 +46,11 @@ class SuperAdmin_functions extends Controller
         ]);
         return redirect("dashboard");
     }
-    public function signin(Request $request)
+    public function login()
+    {
+        return view("login");
+    }
+    public function signinrequest(Request $request)
     {
         if (Auth::attempt($request->only(['email', "password"]))) {
             return redirect("dashboard");

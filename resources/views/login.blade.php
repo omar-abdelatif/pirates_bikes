@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="{{ url('login ') }}" method="get">
+    <form action="{{ url('signinrequest ') }}" method="get">
         @csrf
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
