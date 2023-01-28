@@ -9,6 +9,10 @@
 </head>
 
 <body>
+    <p>
+        have an account
+        <a href="{{url('login')}}">Login</a>
+    </p>
     <form action="{{ url('store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="text" name="name" placeholder="Name Plz">

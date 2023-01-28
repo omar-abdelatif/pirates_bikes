@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class SuperAdmin_functions extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware("auth");
+    // }
     public function dashboard()
     {
         $superAdmin = DB::table("super_admin")->get();
@@ -52,7 +56,8 @@ class SuperAdmin_functions extends Controller
     }
     public function signinrequest(Request $request)
     {
-        if (Auth::attempt($request->only(['email', "password"]))) {
+        dd($request);
+        if (Auth::attempt($request->only(['email', 'password']))) {
             return redirect("dashboard");
         }
         return redirect("login");
