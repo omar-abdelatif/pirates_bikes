@@ -49,7 +49,7 @@ class SuperAdmin_functions extends Controller
         ]);
         return redirect("dashboard");
     }
-    public function loginrequest(Request $request)
+    public function login(Request $request)
     {
         dd($request);
     }
