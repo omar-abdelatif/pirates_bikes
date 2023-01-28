@@ -13,6 +13,13 @@
         have an account
         <a href="{{url('login')}}">Login</a>
     </p>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <ul>
+                <li>{{$error}}</li>
+            </ul>
+        @endforeach
+    @endif
     <form action="{{ url('store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="text" name="name" placeholder="Name Plz">

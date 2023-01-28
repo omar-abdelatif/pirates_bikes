@@ -12,6 +12,13 @@
     <p>
         dont't have an account <a href="{{url('signup')}}">signup</a>
     </p>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <ul>
+                <li>{{$error}}</li>
+            </ul>
+        @endforeach
+    @endif
     <form action="{{ url('signinrequest') }}" method="post">
         @csrf
         <input type="email" name="email" placeholder="Email">
