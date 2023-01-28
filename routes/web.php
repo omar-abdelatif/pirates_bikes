@@ -8,6 +8,7 @@ Route::group(["middleware" => "auth"], function () {
     Route::get('edit/{id}', [SuperAdmin_functions::class, "edit"]);
     Route::post('update', [SuperAdmin_functions::class, "update"]);
     Route::get('delete/{id}', [SuperAdmin_functions::class, "delete"]);
+    Route::post('logout', [SuperAdmin_functions::class, "logout"]);
 });
 
 Route::view('/', 'welcome');

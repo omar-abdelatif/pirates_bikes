@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class SuperAdmin_functions extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware("auth");
-    // }
     public function dashboard()
     {
         $superAdmin = DB::table("super_admin")->get();
@@ -22,7 +18,7 @@ class SuperAdmin_functions extends Controller
         $request->validate([
             "name" => "min:3|required|unique:super_admin,name",
             "password" => "min:3|required",
-            "email" => "required|email"
+            "email" => "required|email|unique:super_admin"
         ]);
         DB::table("super_admin")->insert([
             "name" => $request->name,
@@ -56,10 +52,30 @@ class SuperAdmin_functions extends Controller
     }
     public function signinrequest(Request $request)
     {
-        dd($request);
-        if (Auth::attempt($request->only(['email', 'password']))) {
-            return redirect("dashboard");
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard');
         }
+        return redirect('login')->with('danger', 'login failed plz try again');
+    }
+    public function authCheck()
+    {
+        if (Auth::check()) {
+            return view('dashbaord');
+        }
+        return redirect('login')->with(
+            'success',
+            'you are not allowed to access'
+        );
+    }
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        Auth::login();
         return redirect("login");
     }
 }

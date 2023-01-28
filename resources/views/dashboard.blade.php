@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <a style="text-align: center; margin-bottom: 30px;" href="{{"logout"}}">Logout</a>
     <h1 style="text-align: center;">Super Admin Dashboard Table</h1>
     <a href='{{url("signup")}}'>create user</a>
     <table border="1" style="margin: 30px auto 0; width: 100%" ;>
